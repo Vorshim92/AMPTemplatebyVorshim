@@ -50,7 +50,6 @@ App.MonitorChildProcess=False
 App.MonitorChildProcessWaitMs=1000
 App.MonitorChildProcessName=
 App.Compatibility=None
-App.SteamWorkshopDownloadLocation={{$FullBaseDir}}undefined
 Console.FilterMatchRegex=
 Console.FilterMatchReplacement=
 Console.ThrowawayMessageRegex=(WARNING|ERROR): Shader.+

@@ -1,5 +1,12 @@
 [
   {
+    "UpdateStageName": "Ensure target dir (Linux)",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/sh",
+    "UpdateSourceArgs": "-lc \"mkdir -p '{{$FullBaseDir}}/nitrox'\""
+  },
+  {
     "UpdateStageName": "Nitrox 1.8 – Download (Linux)",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "FetchURL",
@@ -14,7 +21,8 @@
     "UpdateSource": "ExtractArchive",
     "UpdateSourceArgs": "{{$FullBaseDir}}/nitrox/Nitrox_1.8.0.0_linux_x64.zip",
     "UpdateSourceTarget": "{{$FullBaseDir}}/nitrox",
-    "OverwriteExistingFiles": true
+    "OverwriteExistingFiles": true,
+    "DeleteAfterExtract": true
   },
   {
     "UpdateStageName": "Nitrox 1.8 – Set +x",
