@@ -75,6 +75,7 @@ App.RootDir=./subnautica-18/
 Meta.DisplayImageSource=url:steam:264710
 App.BaseDirectory=./subnautica-18/
 App.WorkingDir=nitrox/linux-x64
+App.Executable=linux-x64/NitroxServer-Subnautica
 App.ExecutableWin=serverfiles\
 App.ExecutableLinux=NitroxServer-Subnautica
 App.LinuxCommandLineArgs={{$PlatformArgs}} {{$FormattedArgs}}
