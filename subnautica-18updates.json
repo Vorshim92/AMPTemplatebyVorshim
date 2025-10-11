@@ -47,9 +47,10 @@
     "UpdateSourceArgs": "-lc \"cat > '{{$FullBaseDir}}/run-nitrox.sh' << 'EOF'\n#!/usr/bin/env bash\nset -euo pipefail\nBASE='{{$FullBaseDir}}'\nexport DOTNET_ROOT=\"$BASE/dotnet\"\nexport PATH=\"$DOTNET_ROOT:$PATH\"\nexport HOME=\"$BASE/home\"\nexport XDG_CONFIG_HOME=\"$BASE/.config\"\nexport XDG_DATA_HOME=\"$BASE/.local/share\"\nexport XDG_CACHE_HOME=\"$BASE/.cache\"\ncd \"$BASE/nitrox/linux-x64\"\nexec \"$BASE/nitrox/linux-x64/NitroxServer-Subnautica\" \"$@\"\nEOF\n\""
   },
   {
-    "UpdateStageName": "chmod run-nitrox.sh",
+    "UpdateStageName": "chmod run-nitrox.sh (robusto)",
     "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "SetExecutableFlag",
-    "UpdateSourceData": "{{$FullBaseDir}}/run-nitrox.sh"
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/sh",
+    "UpdateSourceArgs": "-lc \"chmod +x '{{$FullBaseDir}}/run-nitrox.sh'\""
   }
 ]
