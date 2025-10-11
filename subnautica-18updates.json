@@ -52,5 +52,21 @@
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/sh",
     "UpdateSourceArgs": "-lc \"chmod +x '{{$FullBaseDir}}/run-nitrox.sh'\""
+  },
+  {
+    "UpdateStageName": "Create game dir",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/sh",
+    "UpdateSourceArgs": "-lc \"mkdir -p '{{$FullBaseDir}}/game'\""
+  },
+  {
+    "UpdateStageName": "Download Subnautica (SteamCMD, Windows)",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "SteamCMD",
+    "UpdateSourceData": "264710",
+    "UpdateSourceTarget": "{{$FullBaseDir}}/game",
+    "ForceDownloadPlatform": "Windows",
+    "UpdateSourceVersion": "public"
   }
 ]
