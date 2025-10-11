@@ -12,14 +12,21 @@
     "UpdateSource": "FetchURL",
     "UpdateSourceData": "https://github.com/SubnauticaNitrox/Nitrox/releases/download/1.8.0.0/Nitrox_1.8.0.0_linux_x64.zip",
     "UpdateSourceTarget": "{{$FullBaseDir}}/nitrox",
-    "Unzip": true,
+    "UnzipUpdateSource": true,
     "DeleteAfterExtract": true,
     "OverwriteExistingFiles": true
+  },
+  {
+    "UpdateStageName": "Flatten extracted dir",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-lc \"set -e; d=$(find '{{$FullBaseDir}}/nitrox' -maxdepth 1 -type d -name 'Nitrox_*' | head -n1); if [ -n \\\"$d\\\" ]; then shopt -s dotglob; mv \\\"$d\\\"/* '{{$FullBaseDir}}/nitrox'/; rmdir \\\"$d\\\"; fi\""
   },
   {
     "UpdateStageName": "Nitrox 1.8 – Set +x",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "SetExecutableFlag",
-    "UpdateSourceData": "{{$FullBaseDir}}/nitrox/Nitrox_1.8.0.0_linux_x64/NitroxServer-Subnautica"
+    "UpdateSourceData": "{{$FullBaseDir}}/nitrox/NitroxServer-Subnautica"
   }
 ]
