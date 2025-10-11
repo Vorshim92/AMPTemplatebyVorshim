@@ -1,0 +1,24 @@
+[
+  {
+    "UpdateStageName": "Nitrox Linux Download",
+    "UpdateStageDescription": "Scarica la build Linux x64 di Nitrox 1.8.0.0",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "DownloadFile",
+    "UpdateSourceData": "https://github.com/SubnauticaNitrox/Nitrox/releases/download/1.8.0.0/Nitrox_1.8.0.0_linux_x64.zip",
+    "UpdateSourceTarget": "{{$FullBaseDir}}",
+    "UnzipUpdateSource": true,
+    "DeleteAfterExtract": true,
+    "OverwriteExistingFiles": true
+  },
+  {
+    "UpdateStageName": "Nitrox Windows Download",
+    "UpdateStageDescription": "Scarica la build Windows x64 di Nitrox 1.8.0.0",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "DownloadFile",
+    "UpdateSourceData": "https://github.com/SubnauticaNitrox/Nitrox/releases/download/1.8.0.0/Nitrox_1.8.0.0_win_x64.zip",
+    "UpdateSourceTarget": "{{$FullBaseDir}}",
+    "UnzipUpdateSource": true,
+    "DeleteAfterExtract": true,
+    "OverwriteExistingFiles": true
+  }
+]
