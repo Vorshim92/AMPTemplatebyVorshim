@@ -23,15 +23,11 @@
     "UpdateSourceArgs": "-lc \"chmod +x '{{$FullBaseDir}}/dotnet/dotnet-install.sh' && '{{$FullBaseDir}}/dotnet/dotnet-install.sh' --channel 9.0 --runtime dotnet --install-dir '{{$FullBaseDir}}/dotnet' --no-path\""
   },
   {
-    "UpdateStageName": "Nitrox – Latest Linux (GitHub Release)",
+    "UpdateStageName": "Nitrox – Latest Linux (auto)",
     "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "GithubRelease",
-    "UpdateSourceData": "SubnauticaNitrox/Nitrox",
-    "UpdateSourceExtra": "linux_x64.zip",
-    "UpdateSourceTarget": "{{$FullBaseDir}}/nitrox",
-    "UnzipUpdateSource": true,
-    "DeleteAfterExtract": true,
-    "OverwriteExistingFiles": true
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-lc \"set -e; dir='{{$FullBaseDir}}/nitrox'; mkdir -p \\\"$dir\\\"; url=$(curl -fsSL https://api.github.com/repos/SubnauticaNitrox/Nitrox/releases/latest | grep -oE 'https://[^\"]*linux[_-]x64\\.zip' | head -n1); [ -n \\\"$url\\\" ] || { echo 'No linux x64 asset in latest release'; exit 1; }; cd \\\"$dir\\\"; file=\\\"$(basename \\\"$url\\\")\\\"; curl -fL --retry 3 -o \\\"$file\\\" \\\"$url\\\"; unzip -o \\\"$file\\\"; rm -f \\\"$file\\\"\""
   },
   {
     "UpdateStageName": "Make executable (robusto)",
