@@ -17,16 +17,10 @@
     "OverwriteExistingFiles": true
   },
   {
-    "UpdateStageName": "Flatten extracted dir",
+    "UpdateStageName": "Make executable (robusto)",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-lc \"set -e; d=$(find '{{$FullBaseDir}}/nitrox' -maxdepth 1 -type d -name 'Nitrox_*' | head -n1); if [ -n \\\"$d\\\" ]; then shopt -s dotglob; mv \\\"$d\\\"/* '{{$FullBaseDir}}/nitrox'/; rmdir \\\"$d\\\"; fi\""
-  },
-  {
-    "UpdateStageName": "Nitrox 1.8 – Set +x",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "SetExecutableFlag",
-    "UpdateSourceData": "{{$FullBaseDir}}/nitrox/NitroxServer-Subnautica"
+    "UpdateSourceData": "/bin/sh",
+    "UpdateSourceArgs": "-lc \"p='{{$FullBaseDir}}/nitrox/linux-x64/NitroxServer-Subnautica'; [ -f \\\"$p\\\" ] && chmod +x \\\"$p\\\" || { echo 'not found'; exit 1; }\""
   }
 ]
