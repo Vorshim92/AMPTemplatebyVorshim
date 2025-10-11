@@ -4,11 +4,9 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "FetchURL",
     "UpdateSourceData": "https://github.com/SubnauticaNitrox/Nitrox/releases/download/1.8.0.0/Nitrox_1.8.0.0_linux_x64.zip",
+    "UpdateSourceArgs": "{{$FullBaseDir}}/nitrox/Nitrox_1.8.0.0_linux_x64.zip",
     "UpdateSourceTarget": "{{$FullBaseDir}}/nitrox",
-    "UnzipUpdateSource": false,
-    "OverwriteExistingFiles": true,
-    "DeleteAfterExtract": true,
-    "OneShot": false
+    "OverwriteExistingFiles": true
   },
   {
     "UpdateStageName": "Nitrox 1.8 – Extract (Linux)",
@@ -16,19 +14,12 @@
     "UpdateSource": "ExtractArchive",
     "UpdateSourceArgs": "{{$FullBaseDir}}/nitrox/Nitrox_1.8.0.0_linux_x64.zip",
     "UpdateSourceTarget": "{{$FullBaseDir}}/nitrox",
-    "UnzipUpdateSource": false,
-    "OverwriteExistingFiles": false,
-    "DeleteAfterExtract": true,
-    "OneShot": false
+    "OverwriteExistingFiles": true
   },
   {
     "UpdateStageName": "Nitrox 1.8 – Set +x",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "SetExecutableFlag",
-    "UpdateSourceArgs": "{{$FullBaseDir}}/nitrox/NitroxServer-Subnautica",
-    "UnzipUpdateSource": false,
-    "OverwriteExistingFiles": false,
-    "DeleteAfterExtract": true,
-    "OneShot": false
+    "UpdateSourceData": "{{$FullBaseDir}}/nitrox/NitroxServer-Subnautica"
   }
 ]
