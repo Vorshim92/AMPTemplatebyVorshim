@@ -20,6 +20,6 @@
     "UpdateStageName": "Nitrox 1.8 – Set +x",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "SetExecutableFlag",
-    "UpdateSourceData": "{{$FullBaseDir}}/nitrox/NitroxServer-Subnautica"
+    "UpdateSourceData": "{{$FullBaseDir}}/nitrox/Nitrox_1.8.0.0_linux_x64/NitroxServer-Subnautica"
   }
 ]
