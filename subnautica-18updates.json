@@ -24,10 +24,13 @@
   },
   {
     "UpdateStageName": "Nitrox – Latest Linux (auto)",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"set -e; DIR='{{$FullBaseDir}}/nitrox'; mkdir -p \\\"$DIR\\\"; URL=$(curl -fsSL https://api.github.com/repos/SubnauticaNitrox/Nitrox/releases/latest | grep -oE 'https://[^ ]+Nitrox_[0-9]+\\\\.[0-9]+\\\\.[0-9]+\\\\.[0-9]+_linux[_-]x64\\\\.zip' | head -n1); [ -n \\\"$URL\\\" ] || { echo 'No linux x64 asset found'; exit 1; }; cd \\\"$DIR\\\"; FILE=\\\"$(basename \\\"$URL\\\")\\\"; curl -fL --retry 3 -o \\\"$FILE\\\" \\\"$URL\\\"; unzip -o \\\"$FILE\\\"; rm -f \\\"$FILE\\\"; chmod +x NitroxServer 2>/dev/null || true\""
+    "UpdateStageDescription": "Downloads the latest Nitrox Linux release automatically",
+    "UpdateSourcePlatform": 2,
+    "UpdateSource": 2048,
+    "UpdateSourceArch": 3,
+    "UpdateSourceData": "cd {{$FullBaseDir}} && mkdir -p nitrox && cd nitrox && curl -sL https://api.github.com/repos/SubnauticaNitrox/Nitrox/releases/latest | grep -oP 'https://[^\"]+Nitrox_[0-9.]+_linux_x64\\.zip' | head -1 | xargs -I {} sh -c 'curl -fL --retry 3 -o nitrox.zip \"{}\" && unzip -o nitrox.zip && rm nitrox.zip && chmod +x NitroxServer'",
+    "UpdateSourceArgs": null,
+    "ForceDownloadPlatform": 2
   },
   {
     "UpdateStageName": "Make executable (robusto)",
