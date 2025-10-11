@@ -1,26 +1,10 @@
 [
   {
-    "UpdateStageName": "Ensure base + XDG dirs (Linux)",
+    "UpdateStageName": "Ensure target dir (Linux)",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-lc \"set -e; mkdir -p '{{$FullBaseDir}}/nitrox' '{{$FullBaseDir}}/dotnet' '{{$FullBaseDir}}/home' '{{$FullBaseDir}}/.config' '{{$FullBaseDir}}/.local/share' '{{$FullBaseDir}}/.cache'\""
-  },
-  {
-    "UpdateStageName": "Fetch dotnet-install.sh",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "FetchURL",
-    "UpdateSourceData": "https://dot.net/v1/dotnet-install.sh",
-    "UpdateSourceTarget": "{{$FullBaseDir}}/dotnet",
-    "UpdateSourceArgs": "{{$FullBaseDir}}/dotnet/dotnet-install.sh",
-    "OverwriteExistingFiles": true
-  },
-  {
-    "UpdateStageName": "Install .NET 9 runtime (user-local)",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-lc \"chmod +x '{{$FullBaseDir}}/dotnet/dotnet-install.sh' && '{{$FullBaseDir}}/dotnet/dotnet-install.sh' --channel 9.0 --runtime dotnet --install-dir '{{$FullBaseDir}}/dotnet' --no-path\""
+    "UpdateSourceData": "/bin/sh",
+    "UpdateSourceArgs": "-lc \"mkdir -p '{{$FullBaseDir}}/nitrox'\""
   },
   {
     "UpdateStageName": "Nitrox 1.8 – Download+Unzip (Linux)",
@@ -33,10 +17,59 @@
     "OverwriteExistingFiles": true
   },
   {
-    "UpdateStageName": "Make executable (robusto)",
+    "UpdateStageName": "Flatten extracted dir",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/sh",
-    "UpdateSourceArgs": "-lc \"p='{{$FullBaseDir}}/nitrox/linux-x64/NitroxServer-Subnautica'; [ -f \\\"$p\\\" ] && chmod +x \\\"$p\\\" || { echo 'not found'; exit 1; }\""
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-lc \"set -e; d=$(find '{{$FullBaseDir}}/nitrox' -maxdepth 1 -type d -name 'Nitrox_*' | head -n1); if [ -n \\\"$d\\\" ]; then shopt -s dotglob; mv \\\"$d\\\"/* '{{$FullBaseDir}}/nitrox'/; rmdir \\\"$d\\\"; fi\""
+  },
+  {
+    "UpdateStageName": "Nitrox 1.8 – Set +x",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "SetExecutableFlag",
+    "UpdateSourceData": "{{$FullBaseDir}}/nitrox/linux-x64/NitroxServer-Subnautica"
+  },
+
+  {
+    "UpdateStageName": "Ensure dotnet dirs",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-lc \"mkdir -p '{{$FullBaseDir}}/dotnet' '{{$FullBaseDir}}/.config' '{{$FullBaseDir}}/.local/share' '{{$FullBaseDir}}/.cache' '{{$FullBaseDir}}/home'\""
+  },
+  {
+    "UpdateStageName": "Get dotnet-install.sh",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://dot.net/v1/dotnet-install.sh",
+    "UpdateSourceTarget": "{{$FullBaseDir}}/dotnet/dotnet-install.sh",
+    "OverwriteExistingFiles": true
+  },
+  {
+    "UpdateStageName": "chmod dotnet-install.sh",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "SetExecutableFlag",
+    "UpdateSourceData": "{{$FullBaseDir}}/dotnet/dotnet-install.sh"
+  },
+  {
+    "UpdateStageName": "Install .NET 9.0 runtime (local)",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-lc \"'{{$FullBaseDir}}/dotnet/dotnet-install.sh' --version 9.0.9 --runtime dotnet --install-dir '{{$FullBaseDir}}/dotnet'\""
+  },
+
+  {
+    "UpdateStageName": "Write run-nitrox.sh",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-lc \"cat > '{{$FullBaseDir}}/run-nitrox.sh' << 'EOF'\n#!/usr/bin/env bash\nset -euo pipefail\nBASE='{{$FullBaseDir}}'\nexport DOTNET_ROOT=\"$BASE/dotnet\"\nexport PATH=\"$DOTNET_ROOT:$PATH\"\nexport HOME=\"$BASE/home\"\nexport XDG_CONFIG_HOME=\"$BASE/.config\"\nexport XDG_DATA_HOME=\"$BASE/.local/share\"\nexport XDG_CACHE_HOME=\"$BASE/.cache\"\ncd \"$BASE/nitrox/linux-x64\"\nexec \"$BASE/nitrox/linux-x64/NitroxServer-Subnautica\" \"$@\"\nEOF\n\""
+  },
+  {
+    "UpdateStageName": "chmod run-nitrox.sh",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "SetExecutableFlag",
+    "UpdateSourceData": "{{$FullBaseDir}}/run-nitrox.sh"
   }
 ]
