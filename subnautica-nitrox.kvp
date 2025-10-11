@@ -1,119 +1,54 @@
-Meta.DisplayName=Subnautica Nitrox 1.8
-Meta.Description=Nitrox Multiplayer Mod per Subnautica (v1.8.0.0) — build nativa Linux (.NET 9). Supporta solo Subnautica 2.0.
+Meta.DisplayName=Subnautica Nitrox 1.8 (Linux/Windows)
+Meta.Description=Nitrox 1.8.0.0 — server multiplayer per Subnautica. Build nativa Linux (.NET 9), supporta Subnautica 2.0.
 Meta.OS=Windows, Linux
 Meta.AarchSupport=NotSupported
 Meta.Arch=x86_64
-Meta.Author=Vorshim
+Meta.Author=4 Made In / Vorshim
 Meta.URL=https://nitrox.rux.gg/
 Meta.DisplayImageSource=steam:264710
 Meta.EndpointURIFormat=
 Meta.ConfigManifest=
 Meta.MetaConfigManifest=
 Meta.ConfigRoot=subnautica-nitrox.kvp
-Meta.MinAMPVersion=2.4.6.6
+Meta.MinAMPVersion=2.5.0.8
 Meta.SpecificDockerImage=
 Meta.DockerRequired=False
 Meta.DockerBaseReadOnly=False
 Meta.ContainerPolicy=Supported
 Meta.ContainerPolicyReason=
-Meta.ExtraSetupStepsURI=
-Meta.Prerequisites=[]
-Meta.ExtraContainerPackages=[]
-Meta.ConfigReleaseState=NotSpecified
-Meta.NoCommercialUsage=False
-Meta.ConfigVersion=2.0
-Meta.ReleaseNotes=Aggiornato per Nitrox 1.8.0.0 con supporto Linux nativo (.NET 9). Rimosso Mono.
-Meta.BreakingReleaseNotes=Supporto esclusivo a Subnautica 2.0 (le versioni legacy non sono più supportate).
-Meta.AppConfigId=dce37462-fde7-45f2-82ea-a74aefa8e909
-Meta.OriginalSource=Custom-Local
-Meta.ImportableExtensions=[]
-Meta.AppIsMultiIPAware=False
+Meta.AppConfigId=9b0f1a0a-6c0c-4f2b-9e3b-7e1b3c8e9d42
 
-App.DisplayName=Subnautica Nitrox 1.8
-App.RootDir=./subnautica/
-App.BaseDirectory=./subnautica/nitrox/
-; Eseguibili per piattaforma
+App.DisplayName=Subnautica Nitrox 1.8 Server
+App.RootDir=./subnautica-nitrox/
+App.BaseDirectory=./subnautica-nitrox/
+App.WorkingDir=nitrox
+
+; Eseguibili (niente Mono: Linux usa il binario nativo 1.8)
 App.ExecutableWin=nitrox/NitroxServer-Subnautica.exe
 App.ExecutableLinux=nitrox/NitroxServer-Subnautica
-App.WorkingDir=nitrox
-; Nessun argomento necessario: le impostazioni vengono lette dai file di config Nitrox
-App.LinuxCommandLineArgs=
-App.WindowsCommandLineArgs=
-App.CommandLineArgs={{$PlatformArgs}} {{$FormattedArgs}}
-App.UseLinuxIOREDIR=False
 
-; Variabili utili/innocue. SUBNAUTICA_INSTALLATION_PATH resta opzionale con 1.8.
+; Avvio/console
+App.CommandLineArgs={{$PlatformArgs}} {{$FormattedArgs}}
+App.HasReadableConsole=True
+App.HasWritableConsole=True
+App.AdminMethod=STDIO
+App.ApplicationReadyMode=Immediate
+App.ExitMethod=OS_CLOSE
+App.ExitTimeout=30
+App.ApplicationIPBinding=0.0.0.0
+
+; Porta server Nitrox (UDP 11000)
+App.PrimaryApplicationPortRef=ServerPort
+App.Ports=[{"Description":"Nitrox UDP","Ref":"ServerPort","Protocol":1,"Range":1,"Default":11000,"Public":true}]
+
+; Variabili utili
 App.AppSettings={}
 App.EnvironmentVariables={"SteamAppId":"264710"}
 
-App.CommandLineParameterFormat={0}={1}
-App.CommandLineParameterDelimiter= 
-
-; Arresto e comportamento console
-App.ExitMethod=String
-App.ExitTimeout=30
-App.ExitString=stop
-App.ExitFile=app_exit.lck
-
-App.HasWriteableConsole=True
-App.HasReadableConsole=True
-App.UDPLogger=False
-App.SupportsLiveSettingsChanges=False
-App.LiveSettingChangeCommandFormat=set {0} "{1}"
-
-; Porte — 11000/UDP
-App.ForceIPBinding=False
-App.SupportsIPv6=False
-App.ApplicationIPBinding=0.0.0.0
-App.Ports=[{"Description":"Nitrox UDP","Ref":"ServerPort","Protocol":1,"Range":1,"Default":11000,"Public":true}]
-App.AdminPortRef=0
-App.PrimaryApplicationPortRef=ServerPort
-App.UniversalSleepApplicationUDPPortRef=0
-App.UniversalSleepSteamQueryPortRef=0
-App.MaxUsers=100
-
-; Admin/console
-App.UseRandomAdminPassword=True
-App.PersistRandomPassword=True
-App.RemoteAdminPassword=
-App.AdminMethod=STDIO
-App.IgnoreSTDOUTAfterRCON=False
-App.AdminLoginTransform=None
-App.StripANSIControlCodes=True
-App.LoginTransformPrefix=
-App.RCONConnectDelaySeconds=5
-App.RCONConnectRetrySeconds=5
-App.RCONHeartbeatMinutes=0
-App.RCONHeartbeatCommand=ping
-App.RCONSelectIPMethod=Default
-App.TelnetLoginFormat={0}
-App.TelnetNewLineType=Default
-App.TailLogFilePath=
-
-; Aggiornamenti — usa file JSON incluso sotto
+; Pipeline update (stile Abiotic)
 App.UpdateSources=@IncludeJson[subnautica-nitroxupdates.json]
 
-; Altre opzioni generiche
-App.PreStartStages=[]
-App.UserActions=[]
-App.ForceUpdate=False
-App.ForceUpdateReason=
-App.Compatibility=None
-App.SteamUpdateAnonymousLogin=False
-App.SteamForceLoginPrompt=False
-App.RapidStartup=False
-App.SmartExcludeExemptions=["*.cfg","*.conf","*.config","*.ini","*.txt","*.json","*.xml","*.properties","*.kvp","*.yml","*.yaml","*.toml","*.lua"]
-App.SmartExcludeSupported=True
-App.DumpFullChildProcessTree=False
-App.MonitorChildProcessName=
-App.MonitorDirectChildOnly=False
-App.SupportsUniversalSleep=False
-App.WakeupMode=Any
-
-; Ready mode: “Immediate” per evitare falsi negativi finché non affiniamo il regex sui log 1.8
-App.ApplicationReadyMode=Immediate
-
-; Pattern console (li lasciamo vuoti/sicuri al primo giro)
+; Regex/telemetria: lascio neutri finché non vediamo i log 1.8
 Console.FilterMatchRegex=
 Console.FilterMatchReplacement=
 Console.ThrowawayMessageRegex=
@@ -122,11 +57,7 @@ Console.UserJoinRegex=
 Console.UserLeaveRegex=
 Console.UserChatRegex=
 Console.UpdateAvailableRegex=
-Console.PreConnectRegex=
-Console.ConnectIPRegex=
 Console.MetricsRegex=
-Console.ServerInfoRegex=
-Console.HideFromConsoleRegex=
 Console.SuppressLogAtStart=False
 
 Limits.SleepMode=False
