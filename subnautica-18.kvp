@@ -81,7 +81,11 @@ App.ExecutableLinux=nitrox/linux-x64/NitroxServer-Subnautica
 App.LinuxCommandLineArgs={{$PlatformArgs}} {{$FormattedArgs}}
 App.Ports=@IncludeJson[subnautica-18ports.json]
 App.UpdateSources=@IncludeJson[subnautica-18updates.json]
-App.EnvironmentVariables={}
+App.EnvironmentVariables=@json[
+  {"name":"DOTNET_ROOT","value":"{{$FullBaseDir}}/dotnet"},
+  {"name":"LD_LIBRARY_PATH","value":"{{$FullBaseDir}}/dotnet:$LD_LIBRARY_PATH"},
+  {"name":"PATH","value":"{{$FullBaseDir}}/dotnet:$PATH"}
+]
 ; Regex console: lasciamo neutri finché non vediamo i log
 Console.FilterMatchRegex=
 Console.FilterMatchReplacement=

@@ -1,5 +1,35 @@
 [
   {
+    "UpdateStageName": "Ensure dirs (Linux)",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/sh",
+    "UpdateSourceArgs": "-lc \"mkdir -p '{{$FullBaseDir}}/dotnet' '{{$FullBaseDir}}/nitrox'\""
+  },
+  {
+    "UpdateStageName": "Fetch dotnet-install.sh",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://dot.net/v1/dotnet-install.sh",
+    "UpdateSourceArgs": "{{$FullBaseDir}}/dotnet/dotnet-install.sh",
+    "UpdateSourceTarget": "{{$FullBaseDir}}/dotnet",
+    "OverwriteExistingFiles": true
+  },
+  {
+    "UpdateStageName": "chmod dotnet-install.sh",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/sh",
+    "UpdateSourceArgs": "-lc \"chmod +x '{{$FullBaseDir}}/dotnet/dotnet-install.sh'\""
+  },
+  {
+    "UpdateStageName": "Install .NET 9.0.9 (portable)",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-lc \"'{{$FullBaseDir}}/dotnet/dotnet-install.sh' --runtime dotnet --version 9.0.9 --install-dir '{{$FullBaseDir}}/dotnet' --no-path\""
+  },
+  {
     "UpdateStageName": "Ensure target dir (Linux)",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
