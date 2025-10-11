@@ -67,6 +67,9 @@
     "UpdateSourceData": "264710",
     "UpdateSourceTarget": "{{$FullBaseDir}}/game",
     "ForceDownloadPlatform": "Windows",
-    "UpdateSourceVersion": "public"
+    "UpdateSourceVersion": "public",
+    "ConditionSetting": "UseSteamCMD",
+    "ConditionValue": "true",
+    "OneShot": true
   }
 ]
