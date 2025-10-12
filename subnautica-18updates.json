@@ -21,23 +21,6 @@
     "UpdateSourceArgs": "-lc \"set -e; mkdir -p '{{$FullBaseDir}}/nitrox' '{{$FullBaseDir}}/dotnet' '{{$FullBaseDir}}/home' '{{$FullBaseDir}}/.config' '{{$FullBaseDir}}/.local/share' '{{$FullBaseDir}}/.cache'\""
   },
   {
-    "UpdateStageName": "Download base server.cfg",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "FetchURL",
-    "UpdateSourceData": "https://raw.githubusercontent.com/Vorshim92/AMPTemplatebyVorshim/main/subnautica-18server.cfg",
-    "UpdateSourceArgs": "default-server.cfg",
-    "UpdateSourceTarget": "{{$FullBaseDir}}",
-    "OverwriteExistingFiles": false,
-    "SkipOnFailure": false
-  },
-  {
-    "UpdateStageName": "Install server.cfg to save (if missing)",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-lc \"set -e; BASE='{{$FullBaseDir}}'; SAVEDIR=\\\"$BASE/.config/Nitrox/saves/{{$SaveName}}\\\"; mkdir -p \\\"$SAVEDIR\\\"; if [ ! -f \\\"$SAVEDIR/server.cfg\\\" ]; then cp -n \\\"$BASE/default-server.cfg\\\" \\\"$SAVEDIR/server.cfg\\\"; fi\""
-  },
-  {
     "UpdateStageName": "Fetch dotnet-install.sh",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "FetchURL",
