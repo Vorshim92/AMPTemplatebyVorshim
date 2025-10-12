@@ -1,23 +1,7 @@
-{
-  "Groups": [
-    { "Name": "General", "Fields": ["NitroxServerName", "NitroxPassword", "NitroxAdminPassword", "NitroxGameMode", "NitroxSeed", "NitroxDefaultPerm", "NitroxPlayerLimit", "NitroxServerPort", "NitroxAutoSaveSec"] },
-    { "Name": "Options", "Fields": ["NitroxAutoPortForward", "NitroxAllowLAN", "NitroxEnableCommands", "NitroxEnablePvP", "NitroxKeepInventory", "NitroxSafeBuilding"] },
-    {
-      "Name": "Advanced",
-      "Fields": [
-        "NitroxCreateFullEntityCache",
-        "NitroxMaxBackups",
-        "NitroxPostSaveCmd",
-        "NitroxInitialSyncTimeout",
-        "NitroxDisableAutoSave",
-        "NitroxDisableAutoBackup",
-        "NitroxDefaultO2",
-        "NitroxDefaultMaxO2",
-        "NitroxDefaultHP",
-        "NitroxDefaultHunger",
-        "NitroxDefaultThirst",
-        "NitroxDefaultInfection"
-      ]
-    }
-  ]
-}
+[
+  {
+    "ConfigFile": ".config/Nitrox/server.cfg",
+    "ConfigType": "kvp",
+    "AutoMap": true
+  }
+]
