@@ -50,6 +50,13 @@ App.MonitorChildProcess=False
 App.MonitorChildProcessWaitMs=1000
 App.MonitorChildProcessName=
 App.Compatibility=None
+App.PreStartStages=[{
+  "UpdateStageName": "Sync server.cfg into active save",
+  "UpdateSourcePlatform": "Linux",
+  "UpdateSource": "Executable",
+  "UpdateSourceData": "/bin/bash",
+  "UpdateSourceArgs": "-lc \"set -e; BASE='{{$FullBaseDir}}'; CFG=\\\"$BASE/.config/Nitrox/server.cfg\\\"; [ -f \\\"$CFG\\\" ] || exit 0; WORLD=$(grep -m1 '^SaveName=' \\\"$CFG\\\" | cut -d'=\\' -f2-); [ -z \\\"$WORLD\\\" ] && WORLD='My World'; mkdir -p \\\"$BASE/.config/Nitrox/saves/$WORLD\\\"; cp -f \\\"$CFG\\\" \\\"$BASE/.config/Nitrox/saves/$WORLD/server.cfg\\\"\""
+}]
 Meta.OS=2
 Meta.ConfigManifest=subnautica-18config.json
 Meta.MetaConfigManifest=subnautica-18metaconfig.json
