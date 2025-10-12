@@ -1,1 +1,31 @@
-[]
+[
+  { "Name": "NitroxServerName", "DisplayName": "Server Name", "Type": "String", "Default": "My Nitrox Server" },
+  { "Name": "NitroxPassword", "DisplayName": "Server Password", "Type": "String", "Default": "" },
+  { "Name": "NitroxAdminPassword", "DisplayName": "Admin Password", "Type": "String", "Default": "" },
+  { "Name": "NitroxGameMode", "DisplayName": "Gamemode", "Type": "Enum", "EnumValues": ["SURVIVAL", "FREEDOM", "HARDCORE", "CREATIVE"], "Default": "SURVIVAL" },
+  { "Name": "NitroxSeed", "DisplayName": "Seed", "Type": "String", "Default": "" },
+  { "Name": "NitroxDefaultPerm", "DisplayName": "Default Permission", "Type": "Enum", "EnumValues": ["None", "Player", "Moderator", "Admin", "Console"], "Default": "Player" },
+  { "Name": "NitroxAutoSaveSec", "DisplayName": "Auto save interval (s)", "Type": "Integer", "Default": 120, "Min": 10, "Max": 3600 },
+  { "Name": "NitroxPlayerLimit", "DisplayName": "Player Limit", "Type": "Integer", "Default": 100, "Min": 1, "Max": 200 },
+  { "Name": "NitroxServerPort", "DisplayName": "Server Port", "Type": "Integer", "Default": 11000 },
+  { "Name": "NitroxAutoPortForward", "DisplayName": "Enable auto port forwarding", "Type": "Boolean", "Default": true },
+  { "Name": "NitroxAllowLAN", "DisplayName": "Allow LAN Discovery", "Type": "Boolean", "Default": true },
+  { "Name": "NitroxEnableCommands", "DisplayName": "Enable Commands", "Type": "Boolean", "Default": true },
+  { "Name": "NitroxEnablePvP", "DisplayName": "Enable PvP", "Type": "Boolean", "Default": true },
+  { "Name": "NitroxKeepInventory", "DisplayName": "Enable Keep Inventory", "Type": "Boolean", "Default": false },
+
+  { "Name": "NitroxCreateFullEntityCache", "DisplayName": "CreateFullEntityCache", "Type": "Boolean", "Default": false },
+  { "Name": "NitroxMaxBackups", "DisplayName": "MaxBackups", "Type": "Integer", "Default": 10, "Min": 0, "Max": 100 },
+  { "Name": "NitroxPostSaveCmd", "DisplayName": "PostSaveCommandPath", "Type": "String", "Default": "" },
+  { "Name": "NitroxInitialSyncTimeout", "DisplayName": "InitialSyncTimeout (ms)", "Type": "Integer", "Default": 300000 },
+  { "Name": "NitroxDisableAutoSave", "DisplayName": "DisableAutoSave", "Type": "Boolean", "Default": false },
+  { "Name": "NitroxDisableAutoBackup", "DisplayName": "DisableAutoBackup", "Type": "Boolean", "Default": false },
+
+  { "Name": "NitroxDefaultO2", "DisplayName": "DefaultOxygenValue", "Type": "Integer", "Default": 45 },
+  { "Name": "NitroxDefaultMaxO2", "DisplayName": "DefaultMaxOxygenValue", "Type": "Integer", "Default": 45 },
+  { "Name": "NitroxDefaultHP", "DisplayName": "DefaultHealthValue", "Type": "Integer", "Default": 80 },
+  { "Name": "NitroxDefaultHunger", "DisplayName": "DefaultHungerValue", "Type": "Number", "Default": 50.5 },
+  { "Name": "NitroxDefaultThirst", "DisplayName": "DefaultThirstValue", "Type": "Number", "Default": 90.5 },
+  { "Name": "NitroxDefaultInfection", "DisplayName": "DefaultInfectionValue", "Type": "Number", "Default": 0.1 },
+  { "Name": "NitroxSafeBuilding", "DisplayName": "SafeBuilding", "Type": "Boolean", "Default": true }
+]
