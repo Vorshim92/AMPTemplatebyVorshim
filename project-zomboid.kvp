@@ -72,7 +72,7 @@ App.ApplicationReadyMode=RegexMatch
 Console.FilterMatchRegex=
 Console.FilterMatchReplacement=
 Console.ThrowawayMessageRegex=^(WARNING|ERROR): Shader.+$
-Console.AppReadyRegex=^LOG\s+: Network\s+, \d+>.*> \*+ SERVER STARTED \*+$
+Console.AppReadyRegex=^LOG\s+:\s*Network\s+.*>\s*\*+\s*SERVER STARTED\s*\*+
 Console.UserJoinRegex=^LOG\s+: Network\s+, \d+>(?:.+?)> \[(?:.+?)\] > ConnectionManager: \[fully-connected\] (?:.+?) steam-id=(?<userid>.+?) (?:.+?) username="(?<username>.+?)" (?:.+?)$
 Console.UserLeaveRegex=^LOG\s+: Network\s+, \d+>.*> Disconnected player "(?<username>.+?)" (?<userid>.+?)$
 Console.UserChatRegex=^$
