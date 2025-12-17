@@ -73,8 +73,8 @@ Console.FilterMatchRegex=
 Console.FilterMatchReplacement=
 Console.ThrowawayMessageRegex=^(WARNING|ERROR): Shader.+$
 Console.AppReadyRegex=^LOG\s+:\s*Network\s+.*>\s*\*+\s*SERVER STARTED\s*\*+
-Console.UserJoinRegex=^LOG\s+:\s+Lua\s+.*>\s*###\s*LUA PLAYER JOIN\s+steamid=(?<userid>\d+)\s+username="(?<username>.+?)"\s*###\s*$
-Console.UserLeaveRegex=^LOG\s+:\s+Lua\s+.*>\s*###\s*LUA PLAYER LEAVE\s+steamid=(?<userid>\d+)\s+username="(?<username>.+?)"\s*###\s*$
+Console.UserJoinRegex=^LOG\s+:\s+Lua\s+.*>\s*###\s*LUA PLAYER JOIN\s+username="(?<username>.+?)"\s*###\s*$
+Console.UserLeaveRegex=^LOG\s+:\s+Lua\s+.*>\s*###\s*LUA PLAYER LEAVE\s+username="(?<username>.+?)"\s*###\s*$
 Console.UserChatRegex=^$
 Console.UpdateAvailableRegex=^$
 Console.MetricsRegex=
