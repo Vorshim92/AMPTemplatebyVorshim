@@ -5,7 +5,7 @@
         "UpdateSource": "SteamCMD",
         "UpdateSourceData": "380870",
         "UpdateSourceArgs": "108600",
-        "UpdateSourceVersion": "unstable",
+        "UpdateSourceVersion": "public",
         "UpdateSourceConditionSetting": "EnableBeta",
         "UpdateSourceConditionValue": "false",
         "SkipOnFailure": false
