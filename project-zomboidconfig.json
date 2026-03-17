@@ -12,7 +12,7 @@
         "ExcludeFromImport": true,
         "ParamFieldName": "DefaultPort",
         "IncludeInCommandLine": false,
-        "DefaultValue": "16261",
+        "DefaultValue": "27000",
         "EnumValues": {}
     },
     {
@@ -28,7 +28,7 @@
         "ExcludeFromImport": true,
         "ParamFieldName": "UDPPort",
         "IncludeInCommandLine": false,
-        "DefaultValue": "16262",
+        "DefaultValue": "27001",
         "EnumValues": {}
     },
     {
@@ -44,7 +44,7 @@
         "ExcludeFromImport": true,
         "ParamFieldName": "RCONPort",
         "IncludeInCommandLine": false,
-        "DefaultValue": "27015",
+        "DefaultValue": "27100",
         "EnumValues": {}
     },
     {

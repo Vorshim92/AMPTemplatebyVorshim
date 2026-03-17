@@ -1,21 +1,21 @@
 [
     {
         "Protocol": "UDP",
-        "Port": 16261,
+        "Port": 27000,
         "Ref": "ApplicationPort1",
         "Name": "Steam Port",
         "Description": "Port for Steam client connections"
     },
     {
         "Protocol": "UDP",
-        "Port": 16262,
+        "Port": 27001,
         "Ref": "ApplicationPort2",
         "Name": "Direct Port",
         "Description": "Port for direct client connections"
     },
     {
         "Protocol": "TCP",
-        "Port": 27015,
+        "Port": 27100,
         "Ref": "RemoteAdminPort",
         "Name": "RCON Port",
         "Description": "Port for RCON traffic"
