@@ -73,6 +73,7 @@ Console.FilterMatchRegex=
 Console.FilterMatchReplacement=
 Console.ThrowawayMessageRegex=^(WARNING|ERROR): Shader.+$
 Console.AppReadyRegex=^LOG\s+: Network\s+.*> \*+ SERVER STARTED \*+$
+Console.AppStoppedRegex=^LOG\s+: General\s+.*> Shutdown handling finished$
 Console.UserJoinRegex=^LOG\s+:\s+Lua\s+.*>\s*###\s*LUA PLAYER JOIN\s+username="(?<username>.+?)"\s*###\s*$
 Console.UserLeaveRegex=^LOG\s+:\s+Lua\s+.*>\s*###\s*LUA PLAYER LEAVE\s+username="(?<username>.+?)"\s*###\s*$
 Console.UserChatRegex=^$
@@ -80,7 +81,7 @@ Console.UpdateAvailableRegex=^$
 Console.MetricsRegex=
 Console.SuppressLogAtStart=False
 Console.ActivateLogRegex=
-Console.ConsoleFormatRegex=^(?<type>\w+)\s*:\s(?<source>\w+)\s+,\s\d+> [\d,]+> (!?\[[\d\- :\.]+\] > )?(?<contents>.+?)$
+Console.ConsoleFormatRegex=^(?<type>\w+)\s*:\s(?<source>\w+)\s+f:\d+\s+st:[\d.]+>\s*(?<contents>.+?)$
 Console.UserActions={}
 Limits.SleepMode=True
 Limits.SleepOnStart=False
