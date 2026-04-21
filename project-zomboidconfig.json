@@ -598,18 +598,17 @@
         "DisplayName": "Steam Scoreboard",
         "Category": "Project Zomboid:stadia_controller",
         "Subcategory": "Server:dns:1",
-        "Description": "Sets whether steam usernames and avatars are visible in the player list",
+        "Description": "If enabled, steam usernames and avatars are visible in the player list for everyone. If disabled, only users whose role has the GetSteamScoreboard capability (typically admins) can see them.",
         "Keywords": "steam,scoreboard,SteamScoreboard",
         "FieldName": "SteamScoreboard",
-        "InputType": "enum",
+        "InputType": "checkbox",
         "IsFlagArgument": false,
         "ParamFieldName": "SteamScoreboard",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
         "EnumValues": {
-            "true": "Visible to everyone",
-            "false": "Visible to no-one",
-            "admin": "Visible to admins only"
+            "False": "false",
+            "True": "true"
         }
     },
     {
