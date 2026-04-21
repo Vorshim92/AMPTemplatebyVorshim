@@ -408,7 +408,7 @@
         "Keywords": "seed,worldgen,Seed",
         "FieldName": "WorldGenSeed",
         "InputType": "hidden",
-        "ParamFieldName": "Seed",
+        "ParamFieldName": "WorldGenSeed",
         "IncludeInCommandLine": false,
         "EnumValues": {}
     },
@@ -609,7 +609,7 @@
         "EnumValues": {
             "true": "Visible to everyone",
             "false": "Visible to no-one",
-            "admin": "Visible to admins only"
+            "admins": "Visible to admins only"
         }
     },
     {
@@ -826,23 +826,6 @@
         "DefaultValue": "1",
         "Placeholder": "1",
         "Suffix": "seconds",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Max Packets Per Second",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Server:dns:1",
-        "Description": "Limits the number of network packets the server will process per second per client (anti-flood). Requires b42",
-        "Keywords": "packets,second,network,flood,MaxPacketsPerSecond",
-        "FieldName": "MaxPacketsPerSecond",
-        "InputType": "number",
-        "MinValue": "100",
-        "MaxValue": "1000",
-        "ParamFieldName": "MaxPacketsPerSecond",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "300",
-        "Placeholder": "300",
-        "Suffix": "packets/s",
         "EnumValues": {}
     },
     {
@@ -1209,6 +1192,21 @@
         "EnumValues": {}
     },
     {
+        "DisplayName": "Nighttime Length",
+        "Category": "Project Zomboid:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Sets how long nighttime lasts depending on daytime: 0.5 means twice as long, 2 means half the normal time",
+        "Keywords": "nighttime,night,nightlengthmodifier",
+        "FieldName": "nightlengthmodifier",
+        "InputType": "number",
+        "IsFlagArgument": false,
+        "ParamFieldName": "nightlengthmodifier",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "1.0",
+        "Placeholder": "1.0",
+        "EnumValues": {}
+    },
+    {
         "DisplayName": "Don't Allow Fire",
         "Category": "Project Zomboid:stadia_controller",
         "Subcategory": "Gameplay:joystick:2",
@@ -1243,21 +1241,58 @@
         }
     },
     {
-        "DisplayName": "Announce Animal Death",
+        "DisplayName": "Minutes Per Book Page",
         "Category": "Project Zomboid:stadia_controller",
         "Subcategory": "Gameplay:joystick:2",
-        "Description": "If enabled, a global message is displayed in the chat when an animal dies. Requires b42",
-        "Keywords": "announce,animal,death,AnnounceAnimalDeath",
-        "FieldName": "AnnounceAnimalDeath",
-        "InputType": "checkbox",
+        "Description": "Sets the number of in-game minutes it takes to read one page of a book. Requires b41",
+        "Keywords": "minutes,book,page,MinutesPerPage",
+        "FieldName": "MinutesPerPage",
+        "InputType": "number",
+        "MinValue": "0",
+        "MaxValue": "60",
         "IsFlagArgument": false,
-        "ParamFieldName": "AnnounceAnimalDeath",
+        "ParamFieldName": "MinutesPerPage",
         "IncludeInCommandLine": false,
-        "DefaultValue": "false",
-        "EnumValues": {
-            "True": "true",
-            "False": "false"
-        }
+        "DefaultValue": "1.00",
+        "Placeholder": "1.00",
+        "Suffix": "minutes",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "Minimum Period for Loot Respawn",
+        "Category": "Project Zomboid:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Sets the in-game hours after which all containers that have been looted at least once will respawn loot. 0 = never. Loot respawn is not impacted by visibility or subsequent looting. Requires b41",
+        "Keywords": "loot,respawn,HoursForLootRespawn",
+        "FieldName": "HoursForLootRespawn",
+        "InputType": "number",
+        "MinValue": "0",
+        "MaxValue": "2147483647",
+        "IsFlagArgument": false,
+        "ParamFieldName": "HoursForLootRespawn",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "0",
+        "Placeholder": "0",
+        "Suffix": "hours",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "Maximum Items for Loot Respawn",
+        "Category": "Project Zomboid:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Sets the maximum number of items that containers can hold to be allowed to respawn. If the number of items is less than or equal to the number set, loot will respawn. Requires b41",
+        "Keywords": "loot,respawn,maximum,MaxItemsForLootRespawn",
+        "FieldName": "MaxItemsForLootRespawn",
+        "InputType": "number",
+        "MinValue": "0",
+        "MaxValue": "2147483647",
+        "IsFlagArgument": false,
+        "ParamFieldName": "MaxItemsForLootRespawn",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "4",
+        "Placeholder": "4",
+        "Suffix": "items",
+        "EnumValues": {}
     },
     {
         "DisplayName": "Item Limit Per Container",
@@ -1274,6 +1309,23 @@
         "Placeholder": "0",
         "Suffix": "items",
         "EnumValues": {}
+    },
+    {
+        "DisplayName": "Construction Prevents Respawn",
+        "Category": "Project Zomboid:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "If enabled, items will not respawn in buildings that players have barricaded or built in. Requires b41",
+        "Keywords": "loot,respawn,construction,ConstructionPreventsLootRespawn",
+        "FieldName": "ConstructionPreventsLootRespawn",
+        "InputType": "checkbox",
+        "IsFlagArgument": false,
+        "ParamFieldName": "ConstructionPreventsLootRespawn",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "true",
+        "EnumValues": {
+            "True": "true",
+            "False": "false"
+        }
     },
     {
         "DisplayName": "Safehouse Prevents Respawn",
@@ -1357,6 +1409,20 @@
             "True": "true",
             "False": "false"
         }
+    },
+    {
+        "DisplayName": "Allow Safehouse Trespass",
+        "Category": "Project Zomboid:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "[Backup setting given typo in config key, to future proof for correction]",
+        "Keywords": "",
+        "FieldName": "SafehouseAllowTrepass",
+        "InputType": "text",
+        "IsFlagArgument": false,
+        "Hidden": true,
+        "ParamFieldName": "SafehouseAllowTrespass",
+        "IncludeInCommandLine": false,
+        "EnumValues": {}
     },
     {
         "DisplayName": "Allow Safehouse Fire",
@@ -1528,23 +1594,6 @@
         }
     },
     {
-        "DisplayName": "Enable War System",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Gameplay:joystick:2",
-        "Description": "If enabled, the war system (temporary safehouse PvP) is active. Requires b42",
-        "Keywords": "war,enable,War",
-        "FieldName": "War",
-        "InputType": "checkbox",
-        "IsFlagArgument": false,
-        "ParamFieldName": "War",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "true",
-        "EnumValues": {
-            "True": "true",
-            "False": "false"
-        }
-    },
-    {
         "DisplayName": "War Start Delay",
         "Category": "Project Zomboid:stadia_controller",
         "Subcategory": "Gameplay:joystick:2",
@@ -1594,6 +1643,21 @@
         "Placeholder": "3",
         "Suffix": "hits",
         "EnumValues": {}
+    },
+    {
+        "DisplayName": "Kick Fast Players",
+        "Category": "Project Zomboid:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "If enabled, players that appear to be moving faster than is possible will be kicked. May be buggy - use with caution. Requires b41",
+        "Keywords": "kick,fast,players,KickFastPlayers",
+        "FieldName": "KickFastPlayers",
+        "InputType": "checkbox",
+        "ParamFieldName": "KickFastPlayers",
+        "DefaultValue": "false",
+        "EnumValues": {
+            "False": "false",
+            "True": "true"
+        }
     },
     {
         "DisplayName": "Speed Limit",
@@ -1824,8 +1888,7 @@
         "EnumValues": {
             "1": "Hidden (default)",
             "2": "Friends",
-            "3": "Friends and nearby users",
-            "4": "Everyone"
+            "3": "Everyone"
         }
     },
     {
@@ -2196,45 +2259,32 @@
         "EnumValues": {}
     },
     {
-        "DisplayName": "Discord Chat Channel",
+        "DisplayName": "Discord Channel",
         "Category": "Project Zomboid:stadia_controller",
         "Subcategory": "Discord and Slack:forum:4",
-        "Description": "Sets the name of the Discord channel used for global chat integration. Requires Discord integration to be enabled",
-        "Keywords": "discord,chat,channel,DiscordChatChannel",
-        "FieldName": "DiscordChatChannel",
+        "Description": "Sets the name of the Discord channel to integrate with. Use \"Discord ID\" if this does not work",
+        "Keywords": "discord,channel,DiscordChannel",
+        "FieldName": "DiscordChannel",
         "InputType": "text",
         "IsFlagArgument": false,
-        "ParamFieldName": "DiscordChatChannel",
+        "ParamFieldName": "DiscordChannel",
         "IncludeInCommandLine": false,
         "DefaultValue": "",
         "EnumValues": {}
     },
     {
-        "DisplayName": "Discord Log Channel",
+        "DisplayName": "Discord Channel ID",
         "Category": "Project Zomboid:stadia_controller",
         "Subcategory": "Discord and Slack:forum:4",
-        "Description": "Sets the name of the Discord channel used to forward server logs. Requires Discord integration to be enabled",
-        "Keywords": "discord,log,channel,DiscordLogChannel",
-        "FieldName": "DiscordLogChannel",
-        "InputType": "text",
+        "Description": "Sets the ID of the Discord channel to integrate with. Use this if \"Discord Channel\" does not work",
+        "Keywords": "discord,channel,id,DiscordChannelID",
+        "FieldName": "DiscordChannelID",
+        "InputType": "number",
         "IsFlagArgument": false,
-        "ParamFieldName": "DiscordLogChannel",
+        "ParamFieldName": "DiscordChannelID",
         "IncludeInCommandLine": false,
         "DefaultValue": "",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Discord Command Channel",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Discord and Slack:forum:4",
-        "Description": "Sets the name of the Discord channel used for admin commands. Requires Discord integration to be enabled",
-        "Keywords": "discord,command,channel,DiscordCommandChannel",
-        "FieldName": "DiscordCommandChannel",
-        "InputType": "text",
-        "IsFlagArgument": false,
-        "ParamFieldName": "DiscordCommandChannel",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "",
+        "Placeholder": "475182341782896651",
         "EnumValues": {}
     },
     {
@@ -2248,214 +2298,6 @@
         "ParamFieldName": "WebhookAddress",
         "IncludeInCommandLine": false,
         "DefaultValue": "",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Safety",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Safety anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,safety,AntiCheatSafety",
-        "FieldName": "AntiCheatSafety",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatSafety",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Movement",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Movement anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,movement,AntiCheatMovement",
-        "FieldName": "AntiCheatMovement",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatMovement",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Hit",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Character-hit anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,hit,AntiCheatHit",
-        "FieldName": "AntiCheatHit",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatHit",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Packet",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Packet-check anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,packet,AntiCheatPacket",
-        "FieldName": "AntiCheatPacket",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatPacket",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Permission",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Player-permission anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,permission,AntiCheatPermission",
-        "FieldName": "AntiCheatPermission",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatPermission",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: XP",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Player-XP anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,xp,AntiCheatXP",
-        "FieldName": "AntiCheatXP",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatXP",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Fire",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Fire-check anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,fire,AntiCheatFire",
-        "FieldName": "AntiCheatFire",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatFire",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: SafeHouse",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Safehouse anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,safehouse,AntiCheatSafeHouse",
-        "FieldName": "AntiCheatSafeHouse",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatSafeHouse",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Recipe",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Recipe-check anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,recipe,AntiCheatRecipe",
-        "FieldName": "AntiCheatRecipe",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatRecipe",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Player",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Player-data anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,player,AntiCheatPlayer",
-        "FieldName": "AntiCheatPlayer",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatPlayer",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Checksum",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Checksum anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,checksum,AntiCheatChecksum",
-        "FieldName": "AntiCheatChecksum",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatChecksum",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Item",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Item-check anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,item,AntiCheatItem",
-        "FieldName": "AntiCheatItem",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatItem",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
-        "EnumValues": {}
-    },
-    {
-        "DisplayName": "Anti-Cheat: Server Customization",
-        "Category": "Project Zomboid:stadia_controller",
-        "Subcategory": "Anti-Cheat:security:5",
-        "Description": "Server-customization anti-cheat protection level. 0=disabled, 1-4=severity levels. Requires b42",
-        "Keywords": "anticheat,server,customization,AntiCheatServerCustomization",
-        "FieldName": "AntiCheatServerCustomization",
-        "InputType": "number",
-        "MinValue": "0",
-        "MaxValue": "4",
-        "ParamFieldName": "AntiCheatServerCustomization",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "4",
-        "Placeholder": "4",
         "EnumValues": {}
     },
     {
